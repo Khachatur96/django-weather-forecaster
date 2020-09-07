@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>Sign Up</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'check_weather/signup.css' %}"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Play">
+
+<style>
+	::placeholder {
+    color: #F96714;
+}
+	#msg{
+		visibility: hidden;
+		min-width: 250px;
+		background-color: #F96714;
+		text-align: center;
+		border-radius: 2px;
+		padding: 16px;
+		position: fixed;
+		z-index: 1;
+		right: 36%;
+		top: 30px;
+		font-size: 17px;
+		margin-right: 30px;
+	}
+	#msg.show{
+		visibility: visible;
+		-webkit-animation:fadein 0.6s,fadeout 0.4s 2.5s;
+		animation: fadein 0.5s,fadeout 0.6s 2.5s
+	}
+	@-webkit-keyframes fadein{
+		from{top:0;opacity: 0}
+		to{top: 30px;opacity: 1;}
+	}
+	@keyframes fadein{
+		from{top:0;opacity: 0}
+		to{top: 30px;opacity: 1;}
+	}
+	@-webkit-keyframes fadeout{
+		from{top:30px;opacity: 1}
+		to{top: 0;opacity: 0;}
+	}
+	@keyframes fadout{
+		from{top:30px;opacity: 1}
+		to{top: 0;opacity: 0;}
+	}
+</style>
+</head>
+<body>
+	<a style="text-decoration: none;" href="{% url 'home' %}">
+	<h1 style="color: #F96714">Weather</h1>
+	</a>
+<div class="signup">
+	<form method="POST">
+		{% csrf_token %}
+		<h2 style="color: #fff;">Sign Up</h2>
+		<input type="text" name="first_name" placeholder="First name" required oninvalid="this.setCustomValidity('Please Enter first name')" oninput="this.setCustomValidity('')">
+		<br><br>
+		<input type="text" name="last_name" placeholder="Last name" required oninvalid="this.setCustomValidity('Please Enter last name')" oninput="this.setCustomValidity('')">
+		<br><br>
+		<input type="text" name="username" placeholder="Username" minlength="6" required oninvalid="this.setCustomValidity('Please Enter valid username')" oninput="this.setCustomValidity('')">
+		<br><br>
+		<input type="password" name="password1" placeholder="Password" minlength="8" required oninvalid="this.setCustomValidity('Please Enter password')" oninput="this.setCustomValidity('')">
+		<br><br>
+		<input type="password" name="password2" placeholder="Confirm Password" minlength="8" required oninvalid="this.setCustomValidity('Please retype password')" oninput="this.setCustomValidity('')">
+		<br><br>
+		<input type="text" name="email" placeholder="Email adress" required oninvalid="this.setCustomValidity('Please Enter Email')" oninput="this.setCustomValidity('')">
+		<br><br>
+		<button type="submit" onclick="myFunction()">Sign Up</button><br><br>
+		{% for message in messages %}
+			<div id="msg">{{ message }}</div>
+		{% endfor %}	
+			<script>
+		function myFunction(){
+			var x = document.getElementById('msg');
+			x.className = 'show';
+			setTimeout(function(){x.className =
+			x.className.replace('show','');},3000);
+		}		
+		</script>
+		Already have account?<a href="{% url 'login' %}" style="text-decoration: none;border-right-color: font-family: 'Play', sens-serif;color: #F96714 ">
+			&nbsp;Log In</a>
+	</form>
+</div>
+</body>	
+</html>

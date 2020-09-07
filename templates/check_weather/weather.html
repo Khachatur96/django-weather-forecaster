@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    
+    <title>Weather</title>
+    
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'check_weather/style.css' %}">
+    
+</head> 
+
+<body>
+
+<div class="header">
+  
+  <a href="#" class="logo">Weather Forecast</a>
+  
+  <div class="header-right">
+    
+    {% if user.is_authenticated %}
+    
+    <a class="active" href="{% url 'logout' %}">Logout</a>
+    
+    {% else %}
+
+    <a href="{% url 'signup' %}">Sign Up</a>
+    
+    {% endif %}
+    
+    <a href="{% url 'your_city' %}">Your City</a>
+    
+    <a class="active" href="{% url 'login' %}">Login</a>
+  
+  </div>
+      
+      <div class="header-right">
+          
+          <a class = 'active' href="{% url 'home' %}">C&#176;</a>
+          
+          <a href="{% url 'farenheit' %}">F&#176;</a> 
+      
+      </div> 
+
+</div>
+
+<div class="container">
+  
+  <div class="outer">
+    
+    <div class="details">
+    
+    </div> 
+  
+  </div>  
+
+</div>
+
+<form method="POST" action="/search/">
+
+  {% csrf_token %}
+    
+    {{ form.name }}
+    
+    <button style='outline: none;' type='submit'>Search</button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

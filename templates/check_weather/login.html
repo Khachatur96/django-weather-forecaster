@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	
+	<title>Log In</title>
+	
+	{% load static %}
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'check_weather/login.css' %}"/>
+	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Play">
+
+</head>
+
+<body>
+	
+	<a href="{% url 'home' %}">
+	
+	<h1 style="color: #666699">Weather</h1>
+	
+	</a>
+	
+	<div class="signin">
+		
+		<form method="POST">
+			
+			{% csrf_token %}
+			
+			<h3>Weather Forecast</h3>
+			<h2 style="color: white">Log In</h2>
+			<input type="text" name="username"
+			placeholder="Username">
+			<input type="password" name="password"
+			placeholder="Password"><br><br>
+			<button type="submit">Log In</button><br>
+			<br>
+			<div id ="container">
+			<a href="#" style="margin-right: 0px:; font-size: 13px; 
+			font-family: Tahoma, Geneva, sans-serif;">Reset 
+			password</a>
+			</div> <br><br><br><br><br>
+			Don't have account?<a href="{% url 'signup' %}">&nbsp; Signup </a>
+		</form>
+		
+	</div>
+	
+	
+</body>
+</html>

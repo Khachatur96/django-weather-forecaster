@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Weather</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'check_weather/searched.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css"/>
+
+</head>
+
+{% for city_weather in searched_cities %}
+{% if city_weather.icon == "01d" %}
+
+<body>
+
+    <section class="hero is-primary" style="background-color:#008ECC; background-image: url(http://kajgana.com/sites/default/files/2019/02/20/images/img-446372.png?itok=48NEcUix); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+        <div class="hero-body">
+
+            <div class="container">
+
+                <h1 class="title">
+
+                    <a href="http://127.0.0.1:8000/">
+                    Weather
+                    </a>
+
+               </h1>
+
+                {% if user.is_authenticated %}
+
+                <h1 style="text-align: right; color: #F0F0F0; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+
+                <h2 style="text-align: right;">
+
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+
+                </h2>
+
+                {% else %}
+
+                <h2 style="text-align: right;">
+
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+
+                </h2>
+
+                <h2 style="text-align: right;">
+
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+
+                </h2>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="columns">
+
+                <div class="column is-offset-4 is-4">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="field has-addons">
+
+                            <div class="control is-expanded">
+
+                                {{ form.name }}
+
+                            </div>
+
+                            <div class="control">
+
+                            </div>
+
+                        </div>
+
+                        <div class="searched">
+
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" >
+
+        <div class="container">
+
+            <div class="columns">
+
+                <div class="column is-offset-4 is-4">
+
+                    <div class="box">
+
+                        <article class="media">
+
+                            <div class="media-left">
+
+                                <figure class="image is-50x50">
+
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+
+                                </figure>
+
+                            </div>
+
+                            <div class="media-content">
+
+                                <div class="content">
+
+                                    <p>
+ 
+                                        <span class="title">{{ city_weather.city }}</span>
+ 
+                                        <br>
+ 
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+ 
+                                        <br> {{ city_weather.description }}
+ 
+                                        <br>Pressure {{ city_weather.pressure }}
+ 
+                                        <br>Humidity {{ city_weather.humidity }}
+ 
+                                        <br>Wind {{ city_weather.wind }} km/h
+ 
+                                        <p>
+                                            No clouds on the horizon. Don't forget your sunglasses.
+ 
+                                        </p>
+ 
+                                    </p>
+ 
+                                </div>
+ 
+                                <a href="{% url 'seven_days' %}">
+ 
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+ 
+                                </button>
+ 
+                                </a>
+ 
+                            </div>
+ 
+                        </article>
+ 
+                    </div>
+ 
+                </div>
+ 
+            </div>
+ 
+        </div>
+
+    </section>
+ 
+    <footer class="footer">
+
+    </footer>
+
+</body>
+
+{% elif city_weather.icon == "02d" or city_weather.icon == "03d" or city_weather.icon == "04d" %}
+
+<body>
+
+    <section class="hero is-primary" style="background-color:#969696; background-image: url(https://hoodline.imgix.net/uploads/story/image/394118/istock__..featured_image_1..cloudy_2.jpg.jpg?auto=format); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+        <div class="hero-body">
+
+            <div class="container">
+
+                <h1 class="title">
+
+                    <a href="http://127.0.0.1:8000/">
+                    Weather
+                    </a>
+
+                </h1>
+
+                {% if user.is_authenticated %}
+
+                <h1 style="text-align: right; color: #F0F0F0; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+
+                <h2 style="text-align: right;">
+
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+
+                </h2>
+
+                {% else %}
+
+                <h2 style="text-align: right;">
+
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+
+                </h2>
+
+                <h2 style="text-align: right;">
+
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+
+                </h2>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="columns">
+
+                <div class="column is-offset-4 is-4">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="field has-addons">
+
+                            <div class="control is-expanded">
+
+                                {{ form.name }}
+
+                            </div>
+
+                            <div class="control">
+
+                            </div>
+
+                        </div>
+
+                        <div class="searched">
+
+                        <br><br><br><br><button  style='outline: none;' type='submit'>Search</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="columns">
+
+                <div class="column is-offset-4 is-4">
+
+                    <div class="box">
+
+                        <article class="media">
+
+                            <div class="media-left">
+
+                                <figure class="image is-50x50">
+
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+ 
+                                </figure>
+ 
+                            </div>
+ 
+                            <div class="media-content">
+ 
+                                <div class="content">
+ 
+                                    <p>
+ 
+                                        <span class="title">{{ city_weather.city }}</span>
+ 
+                                        <br>
+ 
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+ 
+                                        <br> {{ city_weather.description }}
+ 
+                                        <br>Pressure {{ city_weather.pressure }}
+ 
+                                        <br>Humidity {{ city_weather.humidity }}
+ 
+                                        <br>Wind {{ city_weather.wind }} km/h
+ 
+                                        {% if city_weather.icon == "02d" %}
+ 
+                                        <p>
+                                            Sunny day walk is a nice idea
+                                        </p>
+ 
+                                        {% elif city_weather.icon == "03d" %}
+ 
+                                        <p>
+                                            Perfect time to lay down under the blanket with a good movie
+ 
+                                        </p>
+ 
+                                        {% else %}
+ 
+                                        <p>
+                                            Don't forget your umbrella, it's going to rain!
+ 
+                                        </p>
+ 
+                                        {% endif %}
+ 
+                                    </p>
+ 
+                                </div>
+ 
+                                <a href="{% url 'seven_days' %}">
+ 
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+ 
+                                </a>
+                                
+                            </div>
+ 
+                        </article>
+ 
+                    </div>
+ 
+                </div>
+ 
+            </div>
+ 
+        </div>
+ 
+    </section>
+ 
+<footer class="footer">
+
+</footer>
+
+</body>
+
+{% elif city_weather.icon == "09d" or city_weather.icon == "10d" or city_weather.icon == "11d" %}
+
+<body>
+
+    <section class="hero is-primary" style="background-color:#696969; background-image: url(https://blackburnnews.com/wp-content/uploads/2016/02/canstockphoto14713476.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+
+        <div class="hero-body">
+
+            <div class="container">
+
+                <h1 class="title">
+
+                    <a href="http://127.0.0.1:8000/">
+                    Weather
+                    </a>
+
+                </h1>
+
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; color: #F0F0F0; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right; ">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        {% if city_weather.icon == "09d" %}
+                                        <p>
+                                            Rainy rainy rainy.
+                                        </p>
+                                        {% elif city_weather.icon == "10d" %}
+                                        <p>
+                                            Let's be honest with you. It's just raining now.
+                                        </p>
+                                        {% else %}
+                                        <p>
+                                            Trust me, stay at home - it's thunderstorm outside.
+                                        </p>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+{% elif city_weather.icon == "13d" %}
+<body>
+    <section class="hero is-primary" style="background-color:#82CAFA; background-image: url(https://images.vexels.com/media/users/3/152780/raw/5fa636e1b79a6d6df816bfef8c0c89d4-schnee-himmel-hintergrund.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/">
+                    Weather
+                    </a>
+                </h1>
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; color: #F0F0F0; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br><button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        <p>
+                                        You're gifted with snow in the yard, don't just shovel it - sculpt it!
+                                        </p>
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+{% elif city_weather.icon == "50d" or city_weather.icon == "50n" %}
+<body>
+    <section class="hero is-primary" style="background-color:#DCDCDC; background-image: url(https://i.pinimg.com/originals/6b/b2/e9/6bb2e9a559a9073855481605701b2d49.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title" style="color: #008ECC">
+                    <a href="http://127.0.0.1:8000/">
+                        Weather
+                    </a>
+                </h1>
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; color: #008ECC; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right; color: #008ECC">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right; color: #008ECC">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right; color: #008ECC">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" >
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media" >
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        {% if city_weather.icon == "50d" %}
+                                        <p>
+                                            Check out your local library.Relax next to a fireplace!
+                                        </p>
+                                        {% else %}
+                                        <p>
+                                            It's a bit chilly. You can see you breath in the air.
+                                        </p> 
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+
+    </footer>
+</body>
+{% elif city_weather.icon == "01n" or city_weather.icon == "02n" %}
+<body>
+    <section class="hero is-primary" style="background-color:#1F1F1F; background-image: url(https://cdna.artstation.com/p/assets/images/images/014/370/720/large/vitaly-amaresestessi-clear-sky-night.jpg?1543693536); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/">
+                        Weather
+                    </a>
+                </h1>
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        {% if city_weather.icon == "01n" %}
+                                        <p>
+                                            Perfect night with full of stars.
+                                        </p>
+                                        {% elif city_weather.icon == "02n" %}
+                                        <p>
+                                            Nice evening! Time to adventures!
+                                        </p>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+{% elif city_weather.icon == "03n" or city_weather.icon == "04n" %}
+<body>
+    <section class="hero is-primary" style="background-color:#1F1F1F; background-image: url(https://images-na.ssl-images-amazon.com/images/I/61URGwr5PeL._SL1468_.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/">
+                        Weather
+                    </a>
+                </h1>
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        {% if city_weather.icon == "03n" %}
+                                        <p>
+                                            Cold, gray, cloudy evening... Do not suffer from depression! Call your friends and make a little party.
+                                        </p>
+                                        {% elif city_weather.icon == "04n" %}
+                                        <p>
+                                            The situation is very unclear.
+                                        </p>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+{% elif city_weather.icon == "09n" or city_weather.icon == "10n" or city_weather.icon == "11n" %}
+<body>
+    <section class="hero is-primary" style="background-color:#1F1F1F; background-image: url(https://cdn.hipwallpaper.com/i/72/1/hLfxGM.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/">
+                        Weather
+                    </a>
+                </h1>
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        {% if city_weather.icon == "09n" %}
+                                        <p>
+                                            It's pouring. Stay at home! The umbrella will not help you! 
+                                        </p>
+                                        {% elif city_weather.icon == "10n" %}
+                                        <p>
+                                            It's rainy outside. Relax and listen to the music of the nature.
+                                        </p>
+                                        {% elif city_weather.icon == "11n" %}
+                                        <p>
+                                            Take a cup of tea, sit at the window and listen to the thunder.
+                                        </p>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+{% else %}
+<body>
+    <section class="hero is-primary" style="background-color:#1F1F1F; background-image: url(https://wallpaperaccess.com/full/1125632.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    <a href="http://127.0.0.1:8000/">
+                        Weather
+                    </a>
+                </h1>
+                {% if user.is_authenticated %}
+                <h1 style="text-align: right; font-family:verdana; text-decoration: underline">Hello, {{ user.first_name }}</h1>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/logout/">
+                    Logout
+                    </a>
+                </h2>
+                {% else %}
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/signup/">
+                    Sign up
+                    </a>
+                </h2>
+                <h2 style="text-align: right;">
+                    <a href="http://127.0.0.1:8000/login/">
+                    Log in
+                    </a>
+                </h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                            </div>
+                        </div>
+                        <div class="searched">
+                        <br><br><br><br> <button  style='outline: none;' type='submit'>Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ city_weather.city }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ city_weather.temperature }}°C</span>
+                                        <br> {{ city_weather.description }}
+                                        <br>Pressure {{ city_weather.pressure }}
+                                        <br>Humidity {{ city_weather.humidity }}
+                                        <br>Wind {{ city_weather.wind }} km/h
+                                        <p>
+                                            Warm pyjamas will be a good choice.
+                                        </p>
+                                    </p>
+                                </div>
+                                <a href="{% url 'seven_days' %}">
+                                <button type='submit' class="button is-info" style="background-color: #DCDCDC; color: #008ECC; align-self: center;">
+                                    7 Days Weather
+                                </button>
+                                </a>
+                                
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+{% endif %}
+{% endfor %}
+</html>
